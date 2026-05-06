@@ -22,7 +22,7 @@ SECRET_KEY = 'django-insecure-299d(d-qukr)8w6(bv8u6(4)v0$a#kdu8e*4dt!o2xhv#ktqt%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*, .vercel.app').split(',')
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
@@ -117,6 +117,9 @@ STATICFILES_DIRS = [
 
 if os.environ.get('VERCEL'):
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+    # Force DEBUG to True if you want to see errors on Vercel (optional, disable for production)
+    # DEBUG = True 
+
 
 # Media files
 MEDIA_URL = '/media/'
